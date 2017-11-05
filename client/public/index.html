@@ -6,7 +6,20 @@
     </head>
     <body>
         <div id="app" class="container">
-            {{message}}
+            <div>
+                <h2>Employee information is as below </h2>
+            </div>
+            <div>
+            <table class="table table-bordered">
+                <tbody>
+                  <tr v-for="entry in entries">
+                    <td v-for="key in columns">
+                      {{entry[key]}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
     </body>
     
