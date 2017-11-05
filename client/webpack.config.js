@@ -10,5 +10,26 @@ module.exports = {
         historyApiFallback: true,
         inline: true,
         port: 8118
-      }
+      },
+      module: {
+        rules: [
+            {
+                test: /(\.jsx|\.js)$/,
+                use: {
+                    loader: "babel-loader"
+                },
+                exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: "style-loader"
+                    }, {
+                        loader: "css-loader"
+                    }
+                ]
+            }
+        ]
+    }
   }
