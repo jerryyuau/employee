@@ -54,6 +54,7 @@ var app = new Vue({
 				.catch(function (error) {
 					console.log(error);
             });
+            setTimeout(this.start, 3000);            
 		},
 		getData: function(employee) {
             var result = [];
