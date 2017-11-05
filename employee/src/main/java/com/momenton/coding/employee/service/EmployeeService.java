@@ -45,13 +45,13 @@ public class EmployeeService {
     	Employee manager = repository.findEmployeeByName(obj.getManagerName());
     	// not allowed
     	if(manager == null && !"".equalsIgnoreCase(obj.getManagerName())) {
-    		throw new IllegalArgumentException("The manager of " + obj.getName() + "doesn't exist");
+    		throw new IllegalArgumentException("The manager of " + obj.getName() + " doesn't exist");
     	}
     	Employee employee = repository.findEmployeeByName(obj.getName());
     	if(employee == null) {
     		employee = new Employee(obj.getName(), null);
     	} else {
-    		throw new IllegalArgumentException(obj.getName() + "already exist");
+    		throw new IllegalArgumentException(obj.getName() + " already exist");
     	}
     	employee.setManager(manager);
     	repository.save(employee);
