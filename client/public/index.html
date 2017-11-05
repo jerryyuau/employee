@@ -19,6 +19,19 @@
                   </tr>
                 </tbody>
               </table>
+            
+                    <p class="font-weight-bold">Submit new employee</p>
+                    <form>
+                      <div class="form-group">
+                        <label for="name">Employee Name:</label>
+                        <input v-model="name" type="name" class="form-control" id="name" placeholder="Enter Name" name="name">
+                      </div>
+                      <div class="form-group">
+                        <label for="managerName">Manager Name:</label>
+                        <input v-model="managerName" type="name" class="form-control" id="managerName" placeholder="Enter Manager Name" name="managerName">
+                      </div>
+                      <button type="submit" class="btn btn-default" v-on:click="submit">Submit</button>
+                    </form>
             </div>
           </div>
     </body>

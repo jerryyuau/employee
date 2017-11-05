@@ -9,6 +9,8 @@ var app = new Vue({
           ["", "", 3]
       ],
       columns: [],
+      name: "",
+      managerName: ""
     },
     created: function() {
         this.message = "created";
@@ -79,5 +81,22 @@ var app = new Vue({
             this.entries = result; 
             this.columns = [...Array(columnIndex).keys()];
         },
+
+        submit: function(event) {
+            if(this.name == "") {
+                return;
+            }
+            var obj = {
+                name: this.name,
+                managerName: this.managerName
+            };
+            axios.post('http://localhost:8181/add', obj)
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+        }
 	}
   });
