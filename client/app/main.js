@@ -1,8 +1,9 @@
-var axios =require('axios');
+
 var app = new Vue({
     el: '#app',
     data: {
-      message: 'Hello Vue!',
+      message: '',
+	  error: '',
       entries: [
           ["1"],
           ["", "2"],
@@ -13,7 +14,6 @@ var app = new Vue({
       managerName: ""
     },
     created: function() {
-        this.message = "created";
         this.getData = this.getData.bind(this);
         this.fetchData = this.fetchData.bind(this);
         this.start();
@@ -25,7 +25,8 @@ var app = new Vue({
 
 		fetchData: function(getData) {
 			console.log("time:" + new Date());
-			axios.get('http://localhost:8181/getemployees')
+			
+			this.$http.get("http://localhost:8181/getemployees")
 				.then(function (response) {
                     console.log(response);
                     var data = response.data;
@@ -91,12 +92,16 @@ var app = new Vue({
                 name: this.name,
                 managerName: this.managerName
             };
-            axios.post('http://localhost:8181/add', obj)
+			this.message = "";
+			this.error = "";
+            this.$http.post("http://localhost:8181/add", obj)
               .then(function (response) {
-                console.log(response);
+                console.log("post response" + response);
+				this.message = "add employee " + obj.name + "with manager " + obj.managerName + " is successful";
               })
               .catch(function (error) {
-                console.log(error);
+                console.log("post error:" + error);
+				this.error = error.body.message;
               });
         }
 	}

@@ -21,7 +21,10 @@
               </table>
             
                     <p class="font-weight-bold">Submit new employee</p>
-                    <form>
+					<p class="text-info" v-if="message !=''"> {{message}} </p>
+					<p class="text-danger" v-if="error !=''"> {{error}} </p>
+
+                    <form v-on:submit.prevent="submit">
                       <div class="form-group">
                         <label for="name">Employee Name:</label>
                         <input v-model="name" type="name" class="form-control" id="name" placeholder="Enter Name" name="name">
@@ -30,13 +33,13 @@
                         <label for="managerName">Manager Name:</label>
                         <input v-model="managerName" type="name" class="form-control" id="managerName" placeholder="Enter Manager Name" name="managerName">
                       </div>
-                      <button type="submit" class="btn btn-default" v-on:click="submit">Submit</button>
+                      <button type="submit">Submit</button>
                     </form>
             </div>
           </div>
     </body>
     
     <script src="https://cdn.jsdelivr.net/npm/vue" type="text/javascript"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
     <script src="bundle.js" type="text/javascript"></script>
     <html>
